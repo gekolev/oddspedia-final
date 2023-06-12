@@ -1,3 +1,5 @@
+//colors
+$frame-color: #e1e7ed;
 $header-color: #1e3554;
 $profle-color: #112948;
 $inactive-color: #6f8caa;
@@ -8,3 +10,44 @@ $default-small-text-color: #6f8caa;
 $machted-text-color: #00b1ff;
 $white: #fff;
 $black: #000;
+
+//Montserrat font import - all styles and weights
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+.montserrat {
+  font-family: "Montserrat", sans-serif;
+}
+
+//Roboto font import - all styles and weights
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-style: bold;
+}
+
+.headline {
+  color: $text-color;
+  text-align: left;
+  &.space {
+    margin: 10px 20px;
+  }
+}
+
+.circle-bg {
+  background-color: $input-background-color;
+  border-radius: 50%;
+}
+
+.border-80 {
+  border-radius: 80px;
+}
+
+.border-8 {
+  border-radius: 8px;
+}
