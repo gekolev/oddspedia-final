@@ -29,8 +29,8 @@ export default {
 
 <style lang="scss" scoped>
 .back-arrow {
-  background-color: blue;
-  // background-color: $header-color;
+  // background-color: blue;
+  background-color: $header-color;
   //needs to be able to use the header-color variable ://
 }
 </style>
