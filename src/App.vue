@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
     <HeaderComp />
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <SearchComp />
     <MyTeamsComp />
   </div>
 </template>
@@ -11,12 +11,14 @@
 import HeaderComp from "./components/HeaderComp.vue";
 // import HelloWorld from "./components/HelloWorld.vue";
 import MyTeamsComp from "./components/MyTeamsComp.vue";
+import SearchComp from "./components/SearchComp.vue";
 
 export default {
   name: "App",
   components: {
     // HelloWorld,
     HeaderComp,
+    SearchComp,
     MyTeamsComp,
   },
 };
@@ -27,7 +29,7 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  // text-align: center;
   color: #2c3e50;
   background-color: $frame-color;
   min-height: 100vh;

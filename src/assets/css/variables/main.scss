@@ -1,3 +1,7 @@
+body {
+  margin: 0;
+}
+
 //colors
 $frame-color: #e1e7ed;
 $header-color: #1e3554;
@@ -31,6 +35,12 @@ $black: #000;
   font-style: bold;
 }
 
+.all-center {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
 .headline {
   color: $text-color;
   text-align: left;
@@ -42,6 +52,11 @@ $black: #000;
 .circle-bg {
   background-color: $input-background-color;
   border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .border-80 {

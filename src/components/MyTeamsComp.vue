@@ -12,7 +12,7 @@
     <!-- SHOW TEAMS WHICH YOU FOLLOW -->
 
     <div class="single-team">
-      <div>
+      <div class="single-team-block">
         <div class="circle-bg">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +44,7 @@
             />
           </svg>
         </div>
+        <span class="roboto">Barcelona</span>
       </div>
     </div>
   </div>
@@ -66,6 +67,18 @@ export default {
   align-items: center;
   span {
     color: $inactive-color;
+  }
+}
+.single-team {
+  .single-team-block {
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 14px;
+      font-weight: 500;
+      margin-left: 10px;
+    }
   }
 }
 </style>
