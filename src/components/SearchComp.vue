@@ -14,7 +14,7 @@
       />
     </form>
 
-    <div :key="item.id" v-for="item in listItems" class="team">
+    <div :key="item.id" v-for="item in filtered" class="team">
       <div class="circle-bg">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -46,11 +46,13 @@
           />
         </svg>
       </div>
-      <span class="name">{{ item.name }} </span>
+      <span class="name" v-html="highlight(item.name) || item.name" />
       <span class="leagues">{{ item.leagues }} </span>
-      <span class="stadium">{{ item.stadium }} </span>
+      <span class="name" v-html="highlight(item.stadium) || item.stadium" />
 
-      <button v-on:click="test()" class="follow roboto">FOLLOW</button>
+      <button @click="$emit('add-team', item.id)" class="follow roboto">
+        FOLLOW
+      </button>
     </div>
   </div>
 </template>
@@ -58,25 +60,37 @@
 <script>
 export default {
   name: "SearchComp",
+  props: ["listItems"],
   data() {
     return {
-      listItems: [],
+      search: "",
     };
   },
   methods: {
-    async getData() {
-      const res = await fetch(
-        "https://run.mocky.io/v3/ef80523b-0474-4104-8fe6-fe92f8360b28"
+    highlight(data) {
+      if (!this.search) return;
+
+      const pattern = new RegExp(this.search, "i");
+      const matched = data.match(pattern);
+      const highlightedData = data.replace(
+        pattern,
+        `<span class="search-match">${
+          matched ? matched[0] : this.search
+        }</span>`
       );
-      const finalRes = await res.json();
-      this.listItems = finalRes;
-    },
-    test() {
-      console.log("button works");
+      return highlightedData;
     },
   },
-  mounted() {
-    this.getData();
+  computed: {
+    filtered() {
+      if (!this.search) return [];
+      const pattern = new RegExp(this.search, "i");
+      return this.listItems
+        .filter((post) => {
+          return post.name.match(pattern) || post.stadium.match(pattern);
+        })
+        .splice(0, 3);
+    },
   },
 };
 </script>
@@ -91,6 +105,7 @@ export default {
 span {
   margin: 10px;
 }
+
 .follow {
   background-color: rgb(56, 197, 245);
   color: white;

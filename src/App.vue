@@ -2,8 +2,8 @@
   <div id="app">
     <HeaderComp />
     <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    <SearchComp />
-    <MyTeamsComp />
+    <SearchComp :listItems="listItems" @add-team="addTeam" />
+    <MyTeamsComp :listItems="listItems" @remove-team="removeTeam" />
   </div>
 </template>
 
@@ -20,6 +20,30 @@ export default {
     HeaderComp,
     SearchComp,
     MyTeamsComp,
+  },
+  data() {
+    return {
+      listItems: [],
+    };
+  },
+  methods: {
+    async getData() {
+      const res = await fetch(
+        "https://run.mocky.io/v3/ef80523b-0474-4104-8fe6-fe92f8360b28"
+      );
+      const finalRes = await res.json();
+      this.listItems = finalRes;
+    },
+    addTeam(teamId) {
+      this.listItems.find((item) => item.id === teamId).is_following = true;
+      console.log(this.listItems);
+    },
+    removeTeam(teamId) {
+      this.listItems.find((item) => item.id === teamId).is_following = false;
+    },
+  },
+  mounted() {
+    this.getData();
   },
 };
 </script>
