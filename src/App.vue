@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <HeaderComp />
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <SearchComp :listItems="listItems" @add-team="addTeam" />
     <MyTeamsComp :listItems="listItems" @remove-team="removeTeam" />
   </div>
@@ -9,14 +8,12 @@
 
 <script>
 import HeaderComp from "./components/HeaderComp.vue";
-// import HelloWorld from "./components/HelloWorld.vue";
 import MyTeamsComp from "./components/MyTeamsComp.vue";
 import SearchComp from "./components/SearchComp.vue";
 
 export default {
   name: "App",
   components: {
-    // HelloWorld,
     HeaderComp,
     SearchComp,
     MyTeamsComp,
