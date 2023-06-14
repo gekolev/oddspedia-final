@@ -11,11 +11,20 @@
         type="text"
         v-model="search"
         placeholder="Search for a team"
+        @keydown="handleKeyDown"
       />
       <button type="submit"></button>
     </form>
     <div>
-      <div :key="item.id" v-for="item in filtered" class="team">
+      <div
+        v-for="(item, index) in filtered"
+        :class="{ team: true, focused: index === focusedIndex }"
+        :key="index"
+        ref="teamItem"
+        :tabindex="index === focusedIndex ? 0 : -1"
+        @mouseover="focusedIndex = index"
+        @mouseleave="focusedIndex = -1"
+      >
         <div class="all-center">
           <div class="circle-bg">
             <IconSymbol name="team" />
@@ -38,12 +47,23 @@
           </div>
         </div>
 
-        <button @click="$emit('add-team', item.id)" class="follow roboto">
+        <button
+          @click="addFavouriteTeam(item.id)"
+          v-if="!item.is_following"
+          class="follow roboto"
+        >
           FOLLOW
+        </button>
+        <button
+          @click="removeFavouriteTeam(item.id)"
+          v-if="item.is_following"
+          class="follow roboto"
+        >
+          FOLLOWING
         </button>
       </div>
     </div>
-    <div class="no-teams">
+    <div class="no-teams" v-if="filtered.length == 0 && search.length > 0">
       <IconSymbol name="no-teams-found" />
       <span>No Teams Found</span>
     </div>
@@ -52,6 +72,7 @@
 
 <script>
 import IconSymbol from "./IconSymbol.vue";
+import { mapState } from "vuex";
 
 export default {
   name: "SearchComp",
@@ -59,9 +80,46 @@ export default {
   data() {
     return {
       search: "",
+      focusedIndex: -1,
     };
   },
   methods: {
+    handleKeyDown(event) {
+      if (event.key === "ArrowUp") {
+        event.preventDefault();
+        this.moveFocusUp();
+      } else if (event.key === "ArrowDown") {
+        event.preventDefault();
+        this.moveFocusDown();
+      } else if (event.key === "Enter") {
+        event.preventDefault();
+
+        if (
+          this.focusedIndex != -1 &&
+          !this.filtered[this.focusedIndex].is_following
+        )
+          this.addFavouriteTeam(this.filtered[this.focusedIndex].id);
+        else if (this.focusedIndex != -1)
+          this.removeFavouriteTeam(this.filtered[this.focusedIndex].id);
+      } else {
+        this.focusedIndex = -1;
+      }
+    },
+    moveFocusUp() {
+      if (this.focusedIndex > -1) {
+        this.focusedIndex--;
+      } else {
+        this.focusedIndex = this.filtered.length - 1;
+      }
+    },
+    moveFocusDown() {
+      if (this.focusedIndex === this.filtered.length - 1) {
+        this.focusedIndex = -1;
+      } else {
+        this.focusedIndex++;
+      }
+      return;
+    },
     highlight(data) {
       if (!this.search) return;
       const pattern = new RegExp(this.search, "i");
@@ -74,17 +132,29 @@ export default {
       );
       return highlightedData;
     },
+    addFavouriteTeam(teamId) {
+      this.$store.commit("addFavouriteTeam", teamId);
+    },
+    removeFavouriteTeam(teamId) {
+      this.$store.commit("removeFavouriteTeam", teamId);
+    },
   },
   computed: {
     filtered() {
       if (!this.search) return [];
       const pattern = new RegExp(this.search, "i");
-      return this.listItems
-        .filter((post) => {
-          return post.name.match(pattern) || post.stadium.match(pattern);
+      return this.$store.state.teams
+        .filter((team) => {
+          return (
+            team.name.match(pattern) ||
+            team.stadium.match(pattern) ||
+            (team.leagues &&
+              team.leagues.some((league) => league.match(pattern)))
+          );
         })
         .splice(0, 3);
     },
+    ...mapState(["teams"]),
   },
   components: { IconSymbol },
 };
@@ -111,12 +181,14 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  &:hover {
-    background-color: $input-background-color;
-    .circle-bg {
-      background-color: $white;
-    }
-  }
+}
+
+.team.focused {
+  background-color: $input-background-color;
+}
+
+.team.focused .circle-bg {
+  background-color: $white;
 }
 
 .team-info-holder {

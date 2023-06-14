@@ -5,20 +5,20 @@
     </div>
 
     <!-- SHOW IF FOLLOWING TEAMS LIST IS EMPTY -->
-    <div class="empty border-8">
+    <div class="empty border-8" v-if="!isEveryTeamFollowed">
       <span>You aren't following any teams yet.</span>
     </div>
 
     <!-- SHOW TEAMS WHICH YOU FOLLOW -->
 
-    <div :key="item.id" v-for="item in listItems" class="team">
+    <div :key="item.id" v-for="item in teams" class="team">
       <div class="following-team" v-if="item.is_following">
         <div class="circle-bg">
           <IconSymbol name="team" />
         </div>
         <span class="leagues">{{ item.name }} </span>
 
-        <button @click="$emit('remove-team', item.id)" class="follow roboto">
+        <button @click="removeFavouriteTeam(item.id)" class="follow roboto">
           REMOVE
         </button>
       </div>
@@ -28,11 +28,20 @@
 
 <script>
 import IconSymbol from "./IconSymbol.vue";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "MyTeamsComp",
-  props: ["listItems"],
   components: { IconSymbol },
+  methods: {
+    removeFavouriteTeam(teamId) {
+      this.$store.commit("removeFavouriteTeam", teamId);
+    },
+  },
+  computed: {
+    ...mapGetters(["isEveryTeamFollowed"]),
+    ...mapState(["teams"]),
+  },
 };
 </script>
 
