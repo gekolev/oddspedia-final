@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <div class="">
-      <h2 class="montserrat bold italic headline space">SEARCH TEAMS</h2>
+  <div class="search-comp">
+    <div class="title">
+      <h2 class="montserrat bold italic headline">SEARCH TEAMS</h2>
     </div>
 
     <!-- SEARCH INPUT -->
@@ -12,52 +12,47 @@
         v-model="search"
         placeholder="Search for a team"
       />
+      <button type="submit"></button>
     </form>
+    <div>
+      <div :key="item.id" v-for="item in filtered" class="team">
+        <div class="all-center">
+          <div class="circle-bg">
+            <IconSymbol name="team" />
+          </div>
 
-    <div :key="item.id" v-for="item in filtered" class="team">
-      <div class="circle-bg">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="28"
-          height="28"
-          viewBox="0 0 28 28"
-        >
-          <defs>
-            <pattern
-              id="pattern"
-              preserveAspectRatio="xMidYMid slice"
-              width="100%"
-              height="100%"
-              viewBox="0 0 90 90"
-            >
-              <image
-                width="90"
-                height="90"
-                xlink:href="data:image/png;base64,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"
+          <div class="team-info-holder">
+            <div class="leagues">
+              <span>{{ item.leagues[0] }}</span>
+              <span v-if="item.leagues[1]">, {{ item.leagues[1] }}</span>
+            </div>
+            <div>
+              <span class="name" v-html="highlight(item.name) || item.name" />
+              <span class="pipe"></span>
+              <IconSymbol class="stadium-icon" name="stadium" />
+              <span
+                class="stadium"
+                v-html="highlight(item.stadium) || item.stadium"
               />
-            </pattern>
-          </defs>
-          <rect
-            id="team-placeholder"
-            width="28"
-            height="28"
-            fill="url(#pattern)"
-          />
-        </svg>
-      </div>
-      <span class="name" v-html="highlight(item.name) || item.name" />
-      <span class="leagues">{{ item.leagues }} </span>
-      <span class="name" v-html="highlight(item.stadium) || item.stadium" />
+            </div>
+          </div>
+        </div>
 
-      <button @click="$emit('add-team', item.id)" class="follow roboto">
-        FOLLOW
-      </button>
+        <button @click="$emit('add-team', item.id)" class="follow roboto">
+          FOLLOW
+        </button>
+      </div>
+    </div>
+    <div class="no-teams">
+      <IconSymbol name="no-teams-found" />
+      <span>No Teams Found</span>
     </div>
   </div>
 </template>
 
 <script>
+import IconSymbol from "./IconSymbol.vue";
+
 export default {
   name: "SearchComp",
   props: ["listItems"],
@@ -69,7 +64,6 @@ export default {
   methods: {
     highlight(data) {
       if (!this.search) return;
-
       const pattern = new RegExp(this.search, "i");
       const matched = data.match(pattern);
       const highlightedData = data.replace(
@@ -92,18 +86,69 @@ export default {
         .splice(0, 3);
     },
   },
+  components: { IconSymbol },
 };
 </script>
 
 <style lang="scss" scoped>
+.search-comp {
+  margin: 8px 0px;
+  background-color: $white;
+}
+
 .search-field {
+  width: 95%;
+  height: 36px;
+  background-color: $input-background-color;
+  border-radius: 80px;
+  border: none;
+  padding-left: 25px;
+  //   margin: 0 15px 10px 15px;
 }
 .team {
+  padding: 5px 0px 5px 10px;
+  //   padding-left: 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  &:hover {
+    background-color: $input-background-color;
+    .circle-bg {
+      background-color: $white;
+    }
+  }
 }
-span {
-  margin: 10px;
+
+.team-info-holder {
+  margin-left: 15px;
+  .leagues {
+    font-size: 11px;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
+    color: $inactive-color;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: 600;
+    color: $text-color;
+  }
+  .pipe {
+    display: inline-block;
+    margin: 0px 5px;
+    width: 1px;
+    height: 10px;
+    background-color: $frame-color;
+    // color: black;
+    // color: $frame-color;
+  }
+  .stadium-icon {
+    margin-right: 7px;
+  }
+  .stadium {
+    color: $inactive-color;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+  }
 }
 
 .follow {
@@ -112,5 +157,14 @@ span {
   padding: 10px;
   border-radius: 80px;
   border: none;
+}
+.no-teams {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  span {
+    margin-top: 15px;
+  }
 }
 </style>
