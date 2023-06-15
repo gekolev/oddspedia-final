@@ -5,7 +5,7 @@ body {
 //colors
 $frame-color: #e1e7ed;
 $header-color: #1e3554;
-$profle-color: #112948;
+$profile-color: #112948;
 $inactive-color: #6f8caa;
 $active-color: #fff;
 $text-color: #1a3150;
@@ -43,6 +43,10 @@ $black: #000;
 
 .flex {
   display: flex;
+}
+
+.relative {
+  position: relative;
 }
 
 .headline {

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <HeaderComp />
+    <ProfileComp />
     <SearchComp />
     <MyTeamsComp />
   </div>
@@ -8,12 +9,14 @@
 
 <script>
 import HeaderComp from "./components/HeaderComp.vue";
+import ProfileComp from "./components/ProfileComp.vue";
 import MyTeamsComp from "./components/MyTeamsComp.vue";
 import SearchComp from "./components/SearchComp.vue";
 
 export default {
   name: "App",
   components: {
+    ProfileComp,
     HeaderComp,
     SearchComp,
     MyTeamsComp,

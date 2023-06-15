@@ -1,8 +1,10 @@
 <template>
   <div class="my-teams-comp">
+    <!-- TITLE -->
     <div class="title">
       <h2 class="montserrat bold italic headline space">MY TEAMS</h2>
     </div>
+    <!-- END :: TITLE -->
 
     <!-- SHOW IF FOLLOWING TEAMS LIST IS EMPTY -->
     <div class="empty border-8" v-if="!isEveryTeamFollowed">
@@ -52,8 +54,11 @@ export default {
 }
 .my-teams-comp {
   background-color: $white;
+  padding-bottom: 5px;
 }
 .empty {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
   min-height: 90px;
   //   width: 100%;
   background-color: $input-background-color;

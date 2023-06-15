@@ -15,7 +15,6 @@ export default new Vuex.Store({
   mutations: {
     addFavouriteTeam(state, teamId) {
       state.teams.find((item) => item.id === teamId).is_following = true;
-      console.log(state.teams);
     },
     removeFavouriteTeam(state, teamId) {
       state.teams.find((item) => item.id === teamId).is_following = false;

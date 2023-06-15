@@ -13,9 +13,11 @@
         placeholder="Search for a team"
         @keydown="handleKeyDown"
       />
-      <button type="submit"></button>
     </form>
+    <!-- END :: SEARCH INPUT -->
+
     <div>
+      <!-- LOOP AND OUTPUT FILTER RESULTS -->
       <div
         v-for="(item, index) in filtered"
         :class="{ team: true, focused: index === focusedIndex }"
@@ -35,6 +37,7 @@
               <span>{{ item.leagues[0] }}</span>
               <span v-if="item.leagues[1]">, {{ item.leagues[1] }}</span>
             </div>
+
             <div>
               <span class="name" v-html="highlight(item.name) || item.name" />
               <span class="pipe"></span>
@@ -47,6 +50,7 @@
           </div>
         </div>
 
+        <!-- END :: FOLLOW BUTTONS -->
         <button
           @click="addFavouriteTeam(item.id)"
           v-if="!item.is_following"
@@ -61,12 +65,16 @@
         >
           FOLLOWING
         </button>
+        <!-- END :: FOLLOW BUTTONS -->
       </div>
     </div>
+
+    <!-- NO TEAMS FOUND -->
     <div class="no-teams" v-if="filtered.length == 0 && search.length > 0">
       <IconSymbol name="no-teams-found" />
       <span>No Teams Found</span>
     </div>
+    <!-- END :: NO TEAMS FOUND -->
   </div>
 </template>
 
