@@ -201,6 +201,9 @@ export default {
 .search-comp {
   margin: 8px 0px;
   background-color: $white;
+  @media (min-width: 1280px) {
+    margin-top: 0px;
+  }
 }
 
 .search-field {
@@ -245,8 +248,6 @@ export default {
     width: 1px;
     height: 10px;
     background-color: $frame-color;
-    // color: black;
-    // color: $frame-color;
   }
   .stadium-icon {
     margin-right: 7px;
