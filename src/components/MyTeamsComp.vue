@@ -80,7 +80,6 @@ export default {
   .single-team-block {
     display: flex;
     align-items: center;
-
     span {
       font-size: 14px;
       font-weight: 500;

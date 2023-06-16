@@ -3,12 +3,8 @@
     <div class="header">
       <div class="">
         <IconSymbol name="back-arrow" />
-        <!-- <IconSymbol class="logo" name="logo-small" /> -->
         <IconSymbol class="logo-full" name="logo-full" />
       </div>
-      <!-- <div>
-        <h1>Richy Rich</h1>
-      </div> -->
       <div class="relative">
         <IconSymbol class="notif" name="notif" />
       </div>
