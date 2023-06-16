@@ -18,11 +18,11 @@
         <div class="circle-bg">
           <IconSymbol name="team" />
         </div>
-        <span class="leagues">{{ item.name }} </span>
+        <span class="following-team-name">{{ item.name }} </span>
 
-        <button @click="removeFavouriteTeam(item.id)" class="follow roboto">
+        <!-- <button @click="removeFavouriteTeam(item.id)" class="follow roboto">
           REMOVE
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
@@ -51,6 +51,12 @@ export default {
 .following-team {
   display: flex;
   align-items: center;
+  padding: 10px;
+  .following-team-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-left: 10px;
+  }
 }
 .my-teams-comp {
   background-color: $white;

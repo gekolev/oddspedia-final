@@ -219,64 +219,37 @@
   </svg>
   <svg
     v-else-if="name === 'notif'"
-    id="ACTION"
+    id="Layer_1"
+    data-name="Layer 1"
     xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    width="38"
-    height="40"
-    viewBox="0 0 25 40"
+    viewBox="0 0 29 28"
   >
-    <defs>
-      <filter
-        id="Ellipse_208"
-        x="2"
-        y="4"
-        width="36"
-        height="36"
-        filterUnits="userSpaceOnUse"
-      >
-        <feOffset dy="3" input="SourceAlpha" />
-        <feGaussianBlur stdDeviation="3" result="blur" />
-        <feFlood flood-opacity="0.161" />
-        <feComposite operator="in" in2="blur" />
-        <feComposite in="SourceGraphic" />
-      </filter>
-    </defs>
-    <path
-      id="notification"
-      d="M5.333,14.35,4,12.95a10.7,10.7,0,0,0-4,7.8H1.9A8.362,8.362,0,0,1,5.333,14.35ZM18.1,20.75H20a10.606,10.606,0,0,0-3.9-7.8l-1.333,1.4A8.571,8.571,0,0,1,18.1,20.75Zm-1.9.5a6.377,6.377,0,0,0-4.762-6.3v-.7A1.5,1.5,0,0,0,10,12.75a1.5,1.5,0,0,0-1.429,1.5v.7a6.377,6.377,0,0,0-4.762,6.3v5.5l-1.9,2v1H18.1v-1l-1.9-2ZM10,32.75h.381a1.683,1.683,0,0,0,1.333-1.2,1.959,1.959,0,0,0,.19-.8H8.1A1.96,1.96,0,0,0,10,32.75Z"
-      transform="translate(0 -12.75)"
-      fill="#fff"
-    />
-    <g id="NOTIFICATIONS" transform="translate(13 12)">
-      <g transform="matrix(1, 0, 0, 1, -13, -12)" filter="url(#Ellipse_208)">
-        <g
-          id="Ellipse_208-2"
-          data-name="Ellipse 208"
-          transform="translate(13 12)"
-          fill="#00b1ff"
-          stroke="#1e3554"
-          stroke-width="2"
-        >
-          <circle cx="7" cy="7" r="7" stroke="none" />
-          <circle cx="7" cy="7" r="8" fill="none" />
+    <g id="ACTION">
+      <g id="notification">
+        <path
+          d="m5.33,1.6L4,.2C1.61,2.11.16,4.95,0,8h1.9c.11-2.54,1.37-4.9,3.43-6.4Zm12.77,6.4h1.9c-.12-3.04-1.54-5.88-3.9-7.8l-1.33,1.4c2,1.54,3.22,3.88,3.33,6.4Zm-1.9.5c.06-2.95-1.91-5.55-4.76-6.3v-.7c0-.8-.63-1.47-1.44-1.5-.8.04-1.43.7-1.43,1.5v.7c-2.85.75-4.82,3.35-4.76,6.3v5.5l-1.9,2v1h16.19v-1l-1.9-2v-5.5Zm-6.2,11.5h.38c.64-.11,1.16-.58,1.33-1.2.12-.25.18-.52.19-.8h-3.8c-.02,1.07.83,1.97,1.9,2Z"
+          style="fill: #fff"
+        />
+      </g>
+      <g id="NOTIFICATIONS">
+        <g id="Ellipse_208-2" data-name="Ellipse 208-2">
+          <circle cx="20" cy="19" r="7" style="fill: #45abe0" />
+          <path
+            d="m20,28c-4.96,0-9-4.04-9-9s4.04-9,9-9,9,4.04,9,9-4.04,9-9,9Zm0-16c-3.86,0-7,3.14-7,7s3.14,7,7,7,7-3.14,7-7-3.14-7-7-7Z"
+            style="fill: #1e3554"
+          />
+        </g>
+        <g id="_2" data-name=" 2" style="fill: none; isolation: isolate">
+          <g style="fill: none; isolation: isolate">
+            <path
+              d="m18.98,21.9h3.22l-.23,1.1h-5.15l.17-.87,3.3-2.61c.87-.69,1.13-1.11,1.13-1.62,0-.54-.39-.89-1.2-.89-.62,0-1.22.27-1.66.75l-.88-.7c.58-.7,1.58-1.16,2.72-1.16,1.46,0,2.34.76,2.34,1.82,0,.82-.36,1.52-1.58,2.47l-2.18,1.71Z"
+              style="fill: #fff"
+            />
+          </g>
         </g>
       </g>
-      <text
-        id="_2"
-        data-name="2"
-        transform="translate(4 11)"
-        fill="#fff"
-        font-size="10"
-        font-family="Montserrat-SemiBoldItalic, Montserrat"
-        font-weight="600"
-        font-style="italic"
-      >
-        <tspan x="0" y="0">2</tspan>
-      </text>
     </g>
   </svg>
-
   <svg
     v-else-if="name === 'logo-small'"
     xmlns="http://www.w3.org/2000/svg"
@@ -348,6 +321,45 @@
         />
       </g>
     </g>
+  </svg>
+
+  <svg
+    v-else-if="name === 'search'"
+    xmlns="http://www.w3.org/2000/svg"
+    width="17"
+    height="17"
+    viewBox="0 0 17 17"
+  >
+    <g id="Group_8438" data-name="Group 8438" transform="translate(-30 2)">
+      <path
+        id="Path_4936"
+        data-name="Path 4936"
+        d="M18.972,22.869a6.788,6.788,0,1,1,6.788-6.789A6.8,6.8,0,0,1,18.972,22.869Zm0-11.723a4.934,4.934,0,1,0,4.935,4.933A4.938,4.938,0,0,0,18.972,11.146Z"
+        transform="translate(17.816 -11.294)"
+        fill="#00b1ff"
+      />
+      <path
+        id="Path_4937"
+        data-name="Path 4937"
+        d="M22.614,20.649a.931.931,0,0,1-.656-.271L17.9,16.316a.927.927,0,1,1,1.311-1.311l4.062,4.062a.926.926,0,0,1-.654,1.581Z"
+        transform="translate(23.461 -5.649)"
+        fill="#00b1ff"
+      />
+    </g>
+  </svg>
+  <svg
+    v-else-if="name === 'del'"
+    xmlns="http://www.w3.org/2000/svg"
+    width="12"
+    height="12"
+    viewBox="0 0 12 12"
+  >
+    <path
+      id="close"
+      d="M7.1,6.136l4.673-4.673a.777.777,0,0,0-1.1-1.1L6,5.037,1.327.364a.777.777,0,0,0-1.1,1.1L4.9,6.136.228,10.809a.777.777,0,1,0,1.1,1.1L6,7.235l4.673,4.673a.777.777,0,1,0,1.1-1.1Zm0,0"
+      transform="translate(0 -0.136)"
+      fill="#98acc1"
+    />
   </svg>
 </template>
 

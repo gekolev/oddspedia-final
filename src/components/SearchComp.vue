@@ -5,7 +5,7 @@
     </div>
 
     <!-- SEARCH INPUT -->
-    <form action="">
+    <form class="form relative">
       <input
         class="search-field"
         type="text"
@@ -13,12 +13,15 @@
         placeholder="Search for a team"
         @keydown="handleKeyDown"
       />
+      <IconSymbol class="search-icon" name="search" />
+      <IconSymbol class="del-icon" @click.self="clearInput" name="del" />
     </form>
     <!-- END :: SEARCH INPUT -->
 
     <div>
       <!-- LOOP AND OUTPUT FILTER RESULTS -->
       <div
+        class="item"
         v-for="(item, index) in filtered"
         :class="{ team: true, focused: index === focusedIndex }"
         :key="index"
@@ -146,6 +149,10 @@ export default {
     removeFavouriteTeam(teamId) {
       this.$store.commit("removeFavouriteTeam", teamId);
     },
+    clearInput() {
+      this.search.value = "";
+      console.log("clear form button works");
+    },
   },
   computed: {
     filtered() {
@@ -169,23 +176,37 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.form {
+  padding-left: 10px;
+  padding-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 15px;
+  .search-icon {
+    left: 20px;
+    position: absolute;
+  }
+  .del-icon {
+    right: 20px;
+    position: absolute;
+  }
+}
 .search-comp {
   margin: 8px 0px;
   background-color: $white;
 }
 
 .search-field {
-  width: 95%;
+  width: 100%;
   height: 36px;
   background-color: $input-background-color;
   border-radius: 80px;
   border: none;
-  padding-left: 25px;
-  //   margin: 0 15px 10px 15px;
+  padding-left: 35px;
 }
 .team {
-  padding: 5px 0px 5px 10px;
-  //   padding-left: 10px;
+  padding: 5px 10px 5px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -239,6 +260,7 @@ export default {
   border: none;
 }
 .no-teams {
+  padding: 20px 0px;
   display: flex;
   justify-content: center;
   align-items: center;

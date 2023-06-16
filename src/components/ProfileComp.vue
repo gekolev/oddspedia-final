@@ -8,8 +8,8 @@
       <div>
         <h1 class="profile-name">RichyRich</h1>
       </div>
-      <div class="relative">
-        <IconSymbol class="" name="notif" />
+      <div>
+        <IconSymbol class="notif" name="notif" />
       </div>
     </div>
     <div class="profile-pic">
@@ -25,11 +25,12 @@
       </div>
     </div>
     <div class="tabs">
-      <div class="active">
-        <span>MY TEAMS</span>
+      <div class="items-holder active">
+        <div class="items">MY TEAMS</div>
+        <div class="blue-underline"></div>
       </div>
-      <div class="inactive">
-        <span>ABOUT</span>
+      <div class="items-holder inactive">
+        <div class="items">ABOUT</div>
       </div>
     </div>
   </div>
@@ -45,6 +46,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.notif {
+  position: relative;
+  top: 3px;
+  width: 27px;
+  height: 26px;
+}
 .profile-comp-bar {
   padding: 0px 15px;
   display: flex;
@@ -53,15 +60,18 @@ export default {
   align-items: center;
 }
 .tabs {
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
   background-color: $profile-color;
   min-height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: -1px;
-  div {
+  .items-holder {
     margin: 0px 13px;
-    span {
+    .items {
       font-size: 11px;
       font-family: "Roboto", sans-serif;
       font-weight: 400;
@@ -69,7 +79,17 @@ export default {
   }
 }
 .active {
+  position: relative;
   color: $white;
+}
+.blue-underline {
+  background-color: $machted-text-color;
+  border-radius: 100px;
+  width: 120%;
+  height: 6px;
+  position: absolute;
+  bottom: -16px;
+  left: -6px;
 }
 .inactive {
   color: #6f8caa;
@@ -99,6 +119,8 @@ export default {
   background-color: $profile-color;
 }
 .level {
+  text-align: center;
+  padding: 3px;
   color: $white;
   font-size: 10px;
   border-radius: 40px;
