@@ -90,7 +90,7 @@ export default {
   left: -6px;
 }
 .inactive {
-  color: #6f8caa;
+  color: $default-small-text-color;
 }
 .circle-image {
   border-radius: 50%;
@@ -141,6 +141,6 @@ export default {
   color: $white;
   font-size: 10px;
   border-radius: 40px;
-  background-color: #1d3451;
+  background-color: $level-color;
 }
 </style>

@@ -260,8 +260,8 @@ export default {
 }
 
 .follow {
-  background-color: rgb(56, 197, 245);
-  color: white;
+  background-color: $machted-text-color;
+  color: $white;
   padding: 10px;
   border-radius: 80px;
   border: none;
