@@ -7,6 +7,7 @@
     <!-- SEARCH INPUT -->
     <form class="form relative">
       <input
+        ref="search"
         class="search-field"
         type="text"
         v-model="search"
@@ -14,7 +15,9 @@
         @keydown="handleKeyDown"
       />
       <IconSymbol class="search-icon" name="search" />
-      <IconSymbol class="del-icon" @click.self="clearInput" name="del" />
+      <button type="button" class="del-icon" @click="clearInput()">
+        <IconSymbol name="del" />
+      </button>
     </form>
     <!-- END :: SEARCH INPUT -->
 
@@ -150,8 +153,9 @@ export default {
       this.$store.commit("removeFavouriteTeam", teamId);
     },
     clearInput() {
-      this.search.value = "";
-      console.log("clear form button works");
+      this.$refs["search"].value = "";
+      this.search = "";
+      //this could have probably been done in a more efficient manner :/
     },
   },
   computed: {
@@ -190,6 +194,8 @@ export default {
   .del-icon {
     right: 20px;
     position: absolute;
+    border-style: none;
+    background-color: transparent;
   }
 }
 .search-comp {

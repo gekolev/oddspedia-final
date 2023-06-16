@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <HeaderComp />
-    <ProfileComp />
-    <SearchComp />
-    <MyTeamsComp />
+    <div class="max-width">
+      <ProfileComp />
+      <SearchComp />
+      <MyTeamsComp />
+    </div>
   </div>
 </template>
 
@@ -36,5 +38,21 @@ export default {
   color: #2c3e50;
   background-color: $frame-color;
   min-height: 100vh;
+  margin: 0 auto;
+}
+.show-header {
+  opacity: 0;
+}
+@media (min-width: 1280px) {
+  .max-width {
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 600px;
+    border-radius: 8px;
+  }
+  .show-header {
+    opacity: 1;
+  }
 }
 </style>

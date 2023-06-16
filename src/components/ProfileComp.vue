@@ -14,7 +14,7 @@
     </div>
     <div class="profile-pic">
       <div class="profile-pic-block">
-        <div>
+        <div class="image">
           <div>
             <img class="circle-image" src="https://i.imgur.com/WnWvX2N.jpg" />
           </div>
@@ -22,6 +22,7 @@
             <div class="level">Level 5</div>
           </div>
         </div>
+        <div class="profile-name-desktop">RickyRich</div>
       </div>
     </div>
     <div class="tabs">
@@ -46,18 +47,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.notif {
-  position: relative;
-  top: 3px;
-  width: 27px;
-  height: 26px;
-}
 .profile-comp-bar {
   padding: 0px 15px;
   display: flex;
   background-color: $header-color;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: 1280px) {
+    display: none;
+  }
 }
 .tabs {
   cursor: pointer;
@@ -117,6 +115,25 @@ export default {
   flex-direction: column;
   min-height: 150px;
   background-color: $profile-color;
+  .profile-name-desktop {
+    display: none;
+  }
+  @media (min-width: 1280px) {
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+    .image {
+      margin-left: 40px;
+    }
+    .profile-name-desktop {
+      margin-left: 20px;
+      display: block;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
+      font-style: italic;
+      color: $white;
+    }
+  }
 }
 .level {
   text-align: center;

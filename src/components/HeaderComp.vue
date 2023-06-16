@@ -1,15 +1,17 @@
 <template>
-  <div class="header">
-    <div class="">
-      <IconSymbol name="back-arrow" />
-      <!-- <IconSymbol class="logo" name="logo-small" /> -->
-      <IconSymbol class="logo-full" name="logo-full" />
-    </div>
-    <!-- <div>
-      <h1>Richy Rich</h1>
-    </div> -->
-    <div class="relative">
-      <IconSymbol class="" name="notif" />
+  <div class="header-holder">
+    <div class="header">
+      <div class="">
+        <IconSymbol name="back-arrow" />
+        <!-- <IconSymbol class="logo" name="logo-small" /> -->
+        <IconSymbol class="logo-full" name="logo-full" />
+      </div>
+      <!-- <div>
+        <h1>Richy Rich</h1>
+      </div> -->
+      <div class="relative">
+        <IconSymbol class="notif" name="notif" />
+      </div>
     </div>
   </div>
 </template>
@@ -27,8 +29,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.header-holder {
+  display: none;
+  @media (min-width: 1280px) {
+    display: block;
+  }
+}
 .header {
-  opacity: 0;
   background-color: $header-color;
   min-height: 55px;
   display: flex;
@@ -38,9 +45,5 @@ export default {
   .logo-full {
     margin-left: 15px;
   }
-}
-.back-arrow {
-  // background-color: blue;
-  //needs to be able to use the header-color variable ://
 }
 </style>
